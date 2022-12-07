@@ -4,6 +4,7 @@ import PackageDescription
 
 let package = Package(
     name: "Day7",
+    platforms: [.macOS(.v13)],
     products: [
         .library(
             name: "Day7",
