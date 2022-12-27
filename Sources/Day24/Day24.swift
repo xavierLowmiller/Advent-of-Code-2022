@@ -27,13 +27,20 @@ struct Position: Hashable {
             if next.x == max.x {
                 next.x = min.x + 1
             }
+        default:
+            fatalError()
         }
         self = next
     }
 }
 
-enum Direction: CaseIterable {
-    case up, down, left, right
+struct Direction: OptionSet {
+    var rawValue: UInt8
+    static let up = Direction(rawValue: 1 << 0)
+    static let down = Direction(rawValue: 1 << 1)
+    static let left = Direction(rawValue: 1 << 2)
+    static let right = Direction(rawValue: 1 << 3)
+    static let allCases = [Self.up, .down, .left, .right]
 }
 
 public func findWayThroughBlizzard(_ input: String) -> Int {
@@ -58,7 +65,7 @@ struct BlizzardValley {
     let initial = Position(x: 1, y: 0)
     var position = Position(x: 1, y: 0)
     private var index = 0
-    private var blizzards: [Position: [Direction]]
+    private var blizzards: [Position: Direction]
 
     init(_ input: String) {
         blizzards = [:]
@@ -72,13 +79,13 @@ struct BlizzardValley {
                 case ".":
                     break
                 case ">":
-                    blizzards[p, default: []].append(.right)
+                    blizzards[p, default: []].insert(.right)
                 case "<":
-                    blizzards[p, default: []].append(.left)
+                    blizzards[p, default: []].insert(.left)
                 case "^":
-                    blizzards[p, default: []].append(.up)
+                    blizzards[p, default: []].insert(.up)
                 case "v":
-                    blizzards[p, default: []].append(.down)
+                    blizzards[p, default: []].insert(.down)
 
                 default:
                     fatalError("Unexpected Character \(c)")
@@ -92,12 +99,13 @@ struct BlizzardValley {
 
     mutating func step() {
         let oldBlizzards = blizzards
-        blizzards = Dictionary(minimumCapacity: oldBlizzards.count)
+        blizzards = Dictionary(minimumCapacity: max.x * max.y)
         for (p, bs) in oldBlizzards {
-            for direction in bs {
+            for direction in Direction.allCases {
+                guard bs.contains(direction) else { continue }
                 var position = p
                 position.move(direction, min: min, max: max)
-                blizzards[position, default: []].append(direction)
+                blizzards[position, default: []].insert(direction)
             }
         }
         index = (index + 1) % cycle
@@ -125,6 +133,8 @@ struct BlizzardValley {
                 p.x -= 1
             case .right:
                 p.x += 1
+            default:
+                fatalError()
             }
 
             if p == exit { return p }
@@ -167,8 +177,8 @@ struct BlizzardValley {
                         description.append("^")
                     case [.down]:
                         description.append("v")
-                    case let b?:
-                        description.append("\(b.count)")
+                    default:
+                        description.append("2")
                     }
                 }
             }
@@ -192,16 +202,18 @@ extension BlizzardValley: Hashable {
 extension Optional where Wrapped == Direction {
     var description: String {
         switch self {
-        case .up:
+        case .up?:
             return "move up"
-        case .down:
+        case .down?:
             return "move down"
-        case .left:
+        case .left?:
             return "move left"
-        case .right:
+        case .right?:
             return "move right"
         case nil:
             return "wait"
+        default:
+            fatalError()
         }
     }
 }
