@@ -1,6 +1,6 @@
 typealias Shape = Set<Position>
 
-func simulateFallingRocks(_ input: String, amount: Int) -> Int {
+public func simulateFallingRocks(_ input: String, amount: Int) -> Int {
     var maxY = 0
     var existingTiles: Shape = [
         Position(x: 1, y: 0),

@@ -1,20 +1,20 @@
-enum Part {
+public enum Part {
     case part1
     case part2
 }
 
-struct Crane {
+public struct Crane {
     private var stacks: [[Character]]
     private var instructions: [Instruction]
     private var part: Part
 
-    init(_ input: String, part: Part) {
+    public init(_ input: String, part: Part) {
         stacks = input.split(separator: "\n\n").first.map(parseInitialState)!
         instructions = input.split(separator: "\n\n").last!.split(separator: "\n").map(Instruction.init)
         self.part = part
     }
 
-    mutating func executeInstructions() {
+    public mutating func executeInstructions() {
         for instruction in instructions {
             let origin = instruction.origin
             let amount = instruction.amount
@@ -31,7 +31,7 @@ struct Crane {
         }
     }
 
-    var topCrates: String {
+    public var topCrates: String {
         String(stacks.compactMap(\.last))
     }
 }

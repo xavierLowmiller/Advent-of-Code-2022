@@ -1,4 +1,4 @@
-func scoreOfPairsInTheRightOrder(_ input: String) -> Int {
+public func scoreOfPairsInTheRightOrder(_ input: String) -> Int {
     let pairs = input.split(separator: "\n\n").map {
         let l1 = List($0.split(separator: "\n")[0])!
         let l2 = List($0.split(separator: "\n")[1])!
@@ -12,7 +12,7 @@ func scoreOfPairsInTheRightOrder(_ input: String) -> Int {
     }
 }
 
-func decoderKey(_ input: String) -> Int {
+public func decoderKey(_ input: String) -> Int {
     let dividerPacket1: List = [[2]]
     let dividerPacket2: List = [[6]]
 

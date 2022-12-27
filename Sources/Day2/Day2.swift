@@ -1,6 +1,6 @@
-struct RPSGame {
+public struct RPSGame {
     let rounds: [(RPS, RPS)]
-    init(_ input: String, isPart1: Bool) {
+    public init(_ input: String, isPart1: Bool) {
         let rounds = input.split(separator: "\n")
         if isPart1 {
             self.rounds = rounds.map { round in
@@ -23,7 +23,7 @@ struct RPSGame {
         }
     }
 
-    func calculateScore() -> Int {
+    public func calculateScore() -> Int {
         rounds.reduce(0) {
             $0 + $1.1.value + $1.1.outcome(against: $1.0)
         }

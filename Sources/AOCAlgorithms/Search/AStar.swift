@@ -17,7 +17,7 @@ public func aStar<Node: Hashable, S: Sequence<Node>>(
     start: Node,
     goal: Node,
     cost: (_ n1: Node, _ n2: Node) -> Int = { _, _ in 1 },
-    heuristic: (Node) -> Int,
+    heuristic: (Node) -> Int = { _ in 1 },
     neighbors: (Node) -> S
 ) -> [Node]? {
     aStar(start: start, goal: { $0 == goal }, cost: cost, heuristic: heuristic, neighbors: neighbors)
@@ -42,7 +42,7 @@ public func aStar<Node: Hashable, S: Sequence<Node>>(
     start: Node,
     goal: (Node) -> Bool,
     cost: (_ n1: Node, _ n2: Node) -> Int = { _, _ in 1 },
-    heuristic: (Node) -> Int,
+    heuristic: (Node) -> Int = { _ in 1 },
     neighbors: (Node) -> S
 ) -> [Node]? {
 

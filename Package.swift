@@ -11,9 +11,12 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/pointfreeco/swift-identified-collections.git", .upToNextMajor(from: "0.5.0")),
         .package(url: "https://github.com/apple/swift-algorithms.git", .upToNextMajor(from: "1.0.0")),
+        .package(url: "https://github.com/apple/swift-collections.git", .upToNextMajor(from: "1.0.0")),
     ],
     targets: [
-        .target(name: "AOCAlgorithms"),
+        .target(name: "AOCAlgorithms", dependencies: [
+            .product(name: "DequeModule", package: "swift-collections"),
+        ]),
         .testTarget(name: "AOCAlgorithmsTests", dependencies: ["AOCAlgorithms"]),
         .target(name: "Day1"),
         .testTarget(name: "Day1Tests", dependencies: ["Day1"]),

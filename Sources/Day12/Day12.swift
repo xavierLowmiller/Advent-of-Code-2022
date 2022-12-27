@@ -28,7 +28,7 @@ private struct HeightMap {
     }
 }
 
-func leastAmountOfStepsPart1(_ input: String) -> Int {
+public func leastAmountOfStepsPart1(_ input: String) -> Int {
     let heightField = parseHeightField(input)
 
     return aStar(
@@ -39,7 +39,7 @@ func leastAmountOfStepsPart1(_ input: String) -> Int {
     )!.count - 1
 }
 
-func leastAmountOfStepsPart2(_ input: String) -> Int {
+public func leastAmountOfStepsPart2(_ input: String) -> Int {
     let heightField = parseHeightField(input)
 
     return heightField.lowPoints.compactMap {

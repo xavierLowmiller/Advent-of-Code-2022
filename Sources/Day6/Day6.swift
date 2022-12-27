@@ -3,7 +3,7 @@
 /// The header is a String of 4 non-repeating characters
 /// - Parameter input: A String representing a datastream buffer
 /// - Returns: The location of the last character of the marker. 1-indexed
-func findBeginningOfPacket(_ input: String) -> Int {
+public func findBeginningOfPacket(_ input: String) -> Int {
     return input.findEndOfNonRepeatingSequence(of: 4)
 }
 
@@ -12,7 +12,7 @@ func findBeginningOfPacket(_ input: String) -> Int {
 /// The message start marker is a String of 14 non-repeating characters
 /// - Parameter input: A String representing a message
 /// - Returns: The location of the last character of the marker. 1-indexed
-func findBeginningOfMessage(_ input: String) -> Int {
+public func findBeginningOfMessage(_ input: String) -> Int {
     return input.findEndOfNonRepeatingSequence(of: 14)
 }
 

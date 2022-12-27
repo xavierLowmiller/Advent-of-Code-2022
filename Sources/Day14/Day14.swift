@@ -1,4 +1,4 @@
-func amountOfSandTheStructureCanHold(_ input: String, withFloor: Bool = false) -> Int {
+public func amountOfSandTheStructureCanHold(_ input: String, withFloor: Bool = false) -> Int {
     var points: Set<Position> = input
         .split(separator: "\n")
         .map(pointsFromRockFormation)

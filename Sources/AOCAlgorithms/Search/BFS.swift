@@ -1,3 +1,5 @@
+import DequeModule
+
 public func bfs<Node: Hashable, S: Sequence<Node>>(
     start: Node,
     goal: Node,
@@ -11,15 +13,14 @@ public func bfs<Node: Hashable, S: Sequence<Node>>(
     goal: (Node) -> Bool,
     neighbors: (Node) -> S
 ) -> [Node]? {
-    var queue: [Node] = [start]
+    var queue: Deque<Node> = [start]
     var explored: Set<Node> = [start]
 
     // For node n, cameFrom[n] is the node immediately preceding it
     // on the cheapest path from start to n currently known.
     var cameFrom: [Node: Node] = [:]
 
-    while !queue.isEmpty {
-        let node = queue.removeFirst()
+    while let node = queue.popFirst() {
 
         guard !goal(node) else {
             return cameFrom.reconstructPath(to: node)

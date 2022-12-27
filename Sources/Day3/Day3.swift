@@ -1,6 +1,6 @@
 import Algorithms
 
-func sumOfPrioritiesOfItemInBothCompartments(input: String) -> Int {
+public func sumOfPrioritiesOfItemInBothCompartments(input: String) -> Int {
     input.split(separator: "\n").map {
         let sharedItems = Set($0.prefix($0.count / 2))
             .intersection(Set($0.suffix($0.count / 2)))
@@ -10,7 +10,7 @@ func sumOfPrioritiesOfItemInBothCompartments(input: String) -> Int {
     .reduce(0, +)
 }
 
-func sumOfPrioritiesOfElfBadges(input: String) -> Int {
+public func sumOfPrioritiesOfElfBadges(input: String) -> Int {
     input.split(separator: "\n").chunks(ofCount: 3).map {
         Set($0[$0.startIndex])
             .intersection($0[$0.startIndex.advanced(by: 1)])

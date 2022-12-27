@@ -1,8 +1,8 @@
-func elfWithMostCalories(_ input: String) -> Int {
+public func elfWithMostCalories(_ input: String) -> Int {
     elves(input).max()!
 }
 
-func elvesWithTopThreeCalories(_ input: String) -> Int {
+public func elvesWithTopThreeCalories(_ input: String) -> Int {
     elves(input).sorted(by: >).prefix(3).reduce(0, +)
 }
 

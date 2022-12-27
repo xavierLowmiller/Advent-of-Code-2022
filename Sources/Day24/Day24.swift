@@ -36,7 +36,7 @@ enum Direction: CaseIterable {
     case up, down, left, right
 }
 
-func findWayThroughBlizzard(_ input: String) -> Int {
+public func findWayThroughBlizzard(_ input: String) -> Int {
     let valley = BlizzardValley(input)
     let goal = valley.exit
 
@@ -45,16 +45,6 @@ func findWayThroughBlizzard(_ input: String) -> Int {
         goal: { $0.position == goal },
         neighbors: \.neighbors
     )!
-
-//    let path = aStar(
-//        start: valley,
-//        goal: { $0.position == goal },
-//        cost: { $1.minute },
-//        heuristic: { abs($0.position.x - goal.x) + abs($0.position.y - goal.y) + $0.minute },
-//        neighbors: \.neighbors
-//    )!
-
-    print(path.map(\.description).joined(separator: "\n"))
 
     return path.count - 1
 }
@@ -102,7 +92,7 @@ struct BlizzardValley {
 
     mutating func step() {
         let oldBlizzards = blizzards
-        blizzards = [:]
+        blizzards = Dictionary(minimumCapacity: oldBlizzards.count)
         for (p, bs) in oldBlizzards {
             for direction in bs {
                 var position = p

@@ -1,12 +1,12 @@
 private typealias ItemValue = UInt
 private typealias MonkeyIndex = Array<Monkey>.Index
 
-enum Mode {
+public enum Mode {
     case part1
     case part2
 }
 
-func playMonkeyGame(input: String, rounds: Int, mode: Mode) -> Int {
+public func playMonkeyGame(input: String, rounds: Int, mode: Mode) -> Int {
     var monkeys = input.split(separator: "\n\n").map(Monkey.init)
     let commonTestNumber = monkeys.reduce(1, { $0 * $1.testValue })
 

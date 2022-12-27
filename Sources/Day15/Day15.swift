@@ -1,11 +1,11 @@
-func numberOfPositionsThatCantContainABeacon(atLine line: Int, input: String) -> Int {
+public func numberOfPositionsThatCantContainABeacon(atLine line: Int, input: String) -> Int {
     let positions = input.split(separator: "\n").map(\.sensorAndBeacon)
 
     let overlaps = positions.compactMap { $0.overlap(withLine: line) }
     return overlaps.reduced.map(\.count).reduce(0, +)
 }
 
-func onlyPossiblePosition(inRange maxRange: Int, input: String) -> Position {
+public func onlyPossiblePosition(inRange maxRange: Int, input: String) -> Position {
     let positions = input.split(separator: "\n").map(\.sensorAndBeacon)
 
     var xs: [Int] = []
@@ -114,11 +114,11 @@ struct SensorAndBeacon: Hashable {
     }
 }
 
-struct Position: Hashable {
-    let x: Int
-    let y: Int
+public struct Position: Hashable {
+    public let x: Int
+    public let y: Int
 
-    var tuningFrequency: Int {
+    public var tuningFrequency: Int {
         x * 4000000 + y
     }
 

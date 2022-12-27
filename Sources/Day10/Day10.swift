@@ -1,4 +1,4 @@
-struct CPU {
+public struct CPU {
 
     var x = 1
     var cycle = 0
@@ -6,13 +6,13 @@ struct CPU {
     var pendingInstruction: Instruction?
     var signals: [Int] = []
 
-    var crt = ""
+    public var crt = ""
 
-    init(_ input: String) {
+    public init(_ input: String) {
         instructions = input.split(separator: "\n").map(Instruction.init)
     }
 
-    mutating func runCycles() {
+    public mutating func runCycles() {
         while !instructions.isEmpty {
             let hIndex = (cycle % 40)
 
@@ -47,7 +47,7 @@ struct CPU {
         crt.removeLast()
     }
 
-    var signalStrength: Int {
+    public var signalStrength: Int {
         signals.reduce(0, +)
     }
 }

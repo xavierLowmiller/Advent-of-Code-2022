@@ -1,6 +1,6 @@
 private typealias Operation = ([Substring: Int]) -> Int?
 
-func solveRiddle1(_ input: String) -> Int {
+public func solveRiddle1(_ input: String) -> Int {
     let lines = input.split(separator: "\n")
     var operations: [Substring: Operation] = Dictionary(minimumCapacity: lines.count)
     for line in lines {
@@ -21,7 +21,7 @@ func solveRiddle1(_ input: String) -> Int {
     return solutions["root"]!
 }
 
-func solveRiddle2(_ input: String) -> Int {
+public func solveRiddle2(_ input: String) -> Int {
     let lines = input.split(separator: "\n").filter { !$0.hasPrefix("humn") }
 
     var operations: [Substring: [Operation]] = Dictionary(minimumCapacity: lines.count)

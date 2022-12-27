@@ -1,8 +1,8 @@
-func totalOverlaps(of input: String) -> Int {
+public func totalOverlaps(of input: String) -> Int {
     input.ranges.filter { $0.contains($1) || $1.contains($0) }.count
 }
 
-func partialOverlaps(of input: String) -> Int {
+public func partialOverlaps(of input: String) -> Int {
     input.ranges.filter { $0.overlaps($1) }.count
 }
 

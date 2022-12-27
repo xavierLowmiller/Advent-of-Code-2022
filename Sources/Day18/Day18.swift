@@ -1,9 +1,9 @@
-func surfaceOfLavaDroplet(_ input: String) -> Int {
+public func surfaceOfLavaDroplet(_ input: String) -> Int {
     let lavaDroplet = Set(input.split(separator: "\n").map(Position.init))
     return lavaDroplet.surfaceArea
 }
 
-func surfaceOfLavaDropletWithoutContainedAir(_ input: String) -> Int {
+public func surfaceOfLavaDropletWithoutContainedAir(_ input: String) -> Int {
     let lavaDroplet = Set(input.split(separator: "\n").map(Position.init))
     return lavaDroplet.surfaceAreaWithoutContainedAir
 }

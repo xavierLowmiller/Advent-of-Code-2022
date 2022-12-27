@@ -1,4 +1,4 @@
-func numberOfPositionsTouchedByTail(_ input: String) -> Int {
+public func numberOfPositionsTouchedByTail(_ input: String) -> Int {
     let motions = input.split(separator: "\n").map(Motion.init)
     var head = Position(x: 0, y: 0)
     var tail = Position(x: 0, y: 0)
@@ -17,7 +17,7 @@ func numberOfPositionsTouchedByTail(_ input: String) -> Int {
     return positionsVisitedByTail.count
 }
 
-func numberOfPositionsTouchedByLastKnot(_ input: String) -> Int {
+public func numberOfPositionsTouchedByLastKnot(_ input: String) -> Int {
     let motions = input.split(separator: "\n").map(Motion.init)
     var head = Position(x: 0, y: 0)
     var k1 = Position(x: 0, y: 0)

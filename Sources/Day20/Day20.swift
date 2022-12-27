@@ -10,11 +10,11 @@ private struct N: Identifiable, Equatable {
     }
 }
 
-struct Decryption {
+public struct Decryption {
     private var array: Array<N>
     private let isPart2: Bool
 
-    init(_ input: String, isPart2: Bool) {
+    public init(_ input: String, isPart2: Bool) {
         let factor = isPart2 ? 811589153 : 1
         array = input
             .split(separator: "\n")
@@ -23,7 +23,7 @@ struct Decryption {
     }
 
 
-    mutating func mix() {
+    public mutating func mix() {
         let order = array
         for _ in 0..<(isPart2 ? 10 : 1) {
             for n in order {
@@ -32,7 +32,7 @@ struct Decryption {
         }
     }
 
-    var score: Int {
+    public var score: Int {
         let indicesToCheck = [1000, 2000, 3000]
         let zeroIndex = array.firstIndex(where: { $0.value == 0 })!
 

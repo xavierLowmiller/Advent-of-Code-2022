@@ -90,11 +90,11 @@ private struct Position: Hashable {
     }
 }
 
-struct Plantation {
+public struct Plantation {
     private var elves: Set<Position>
     private var direction = Direction.north
 
-    init(_ input: String) {
+    public init(_ input: String) {
         elves = Set(minimumCapacity: input.filter({ $0 == "#" }).count)
         for (y, line) in input.split(separator: "\n").enumerated() {
             for (x, c) in line.enumerated() {
@@ -105,7 +105,7 @@ struct Plantation {
         }
     }
 
-    mutating func performElvesAlgorithm() {
+    public mutating func performElvesAlgorithm() {
         // Phase 1: Propose positions
         var proposedPositions: [Position: Position] = [:]
         var proposedPositionsCounts: [Position: Int] = [:]
@@ -129,13 +129,13 @@ struct Plantation {
         direction = direction.next
     }
 
-    var emptySpaces: Int {
+    public var emptySpaces: Int {
         let box = elves.boundingBox
         let size = (box.max.x - box.min.x + 1) * (box.max.y - box.min.y + 1)
         return size - elves.count
     }
 
-    mutating func roundsUntilNoElfMoves() -> Int {
+    public mutating func roundsUntilNoElfMoves() -> Int {
         var round = 0
         var before = elves
 
@@ -148,7 +148,7 @@ struct Plantation {
         return round
     }
 
-    var description: String {
+    public var description: String {
         var description = ""
         let box = elves.boundingBox
         for y in box.min.y...box.max.y {

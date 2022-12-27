@@ -3,13 +3,13 @@ private struct Coord: Hashable {
     let y: Int
 }
 
-struct TreeGrid {
+public struct TreeGrid {
     typealias Height = Int
     private var trees: [Coord: Height] = [:]
     private let maxX: Int
     private let maxY: Int
 
-    init(_ input: String) {
+    public init(_ input: String) {
         var x = 0
         var y = 0
         for line in input.split(separator: "\n") {
@@ -24,7 +24,7 @@ struct TreeGrid {
         maxY = y - 1
     }
 
-    var amountOfVisibleTrees: Int {
+    public var amountOfVisibleTrees: Int {
         var visibleTrees = 0
         for x in 0...maxX {
             for y in 0...maxY {
@@ -48,7 +48,7 @@ struct TreeGrid {
         return visibleTrees
     }
 
-    var highestScenicScore: Int {
+    public var highestScenicScore: Int {
         var highestScore = 0
 
         for x in 1..<maxX {

@@ -1,5 +1,5 @@
 import XCTest
-@testable import Day17
+import Day17
 
 final class Day17Tests: XCTestCase {
 

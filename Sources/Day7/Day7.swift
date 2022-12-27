@@ -1,10 +1,10 @@
 import Foundation
 
-enum FileTree: Equatable {
+public enum FileTree: Equatable {
     case directory(_ name: String, [FileTree])
     case file(_ name: String, _ size: Int)
 
-    init(_ input: String) {
+    public init(_ input: String) {
         var terminal = Terminal()
         for command in input.split(separator: "$ ") {
             terminal.executeCommand(command)
@@ -22,12 +22,12 @@ enum FileTree: Equatable {
         }
     }
 
-    var fileSizeSumForPart1: Int {
+    public var fileSizeSumForPart1: Int {
         let maxSize = 100000
         return directories.map(\.size).filter { $0 < maxSize }.reduce(0, +)
     }
 
-    var smallestDirectoryToDelete: Int {
+    public var smallestDirectoryToDelete: Int {
         let spaceThatNeedsToBeDeleted = size - (70000000 - 30000000)
         return directories.map(\.size)
             .filter { $0 > spaceThatNeedsToBeDeleted }

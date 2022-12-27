@@ -1,5 +1,5 @@
 import XCTest
-@testable import Day4
+import Day4
 
 final class Day4Tests: XCTestCase {
     func testPart1Example() {

@@ -1,4 +1,4 @@
-struct Labyrinth2D {
+public struct Labyrinth2D {
     struct Position: Hashable {
         var x: Int
         var y: Int
@@ -67,7 +67,7 @@ struct Labyrinth2D {
     var direction: Direction = .right
     var instructions: [Instruction]
 
-    init(_ input: String) {
+    public init(_ input: String) {
         tiles = Set(tiles: input.split(separator: "\n\n")[0])
         walls = Set(walls: input.split(separator: "\n\n")[0])
         var instructions = input.split(separator: "\n\n")[1]
@@ -75,7 +75,7 @@ struct Labyrinth2D {
         position = tiles.topLeft
     }
 
-    mutating func walk() {
+    public mutating func walk() {
         while !instructions.isEmpty {
             switch instructions.removeFirst() {
             case .moveForward(let steps):
@@ -90,7 +90,7 @@ struct Labyrinth2D {
         }
     }
 
-    var score: Int {
+    public var score: Int {
         (position.y + 1) * 1000 + (position.x + 1) * 4 + direction.rawValue
     }
 }

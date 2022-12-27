@@ -1,5 +1,5 @@
 import XCTest
-@testable import AOCAlgorithms
+import AOCAlgorithms
 
 final class GCDTests: XCTestCase {
     func testGCD() {

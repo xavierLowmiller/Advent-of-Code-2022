@@ -1,4 +1,4 @@
-func collectGeodesPart1(_ input: String) -> Int {
+public func collectGeodesPart1(_ input: String) -> Int {
     var output = 0
 
     for m in input.matches(of: #/\s*Blueprint (\d+):\s+Each ore robot costs (\d+) ore\.\s+Each clay robot costs (\d+) ore\.\s+Each obsidian robot costs (\d+) ore and (\d+) clay\.\s+Each geode robot costs (\d+) ore and (\d+) obsidian\./#) {
@@ -17,7 +17,7 @@ func collectGeodesPart1(_ input: String) -> Int {
     return output
 }
 
-func collectGeodesPart2(_ input: String) -> Int {
+public func collectGeodesPart2(_ input: String) -> Int {
     var output = 1
 
     for m in input.matches(of: #/\s*Blueprint (\d+):\s+Each ore robot costs (\d+) ore\.\s+Each clay robot costs (\d+) ore\.\s+Each obsidian robot costs (\d+) ore and (\d+) clay\.\s+Each geode robot costs (\d+) ore and (\d+) obsidian\./#).prefix(3) {
