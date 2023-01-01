@@ -64,7 +64,7 @@ let package = Package(
         .testTarget(name: "Day20Tests", dependencies: ["Day20"]),
         .target(name: "Day21"),
         .testTarget(name: "Day21Tests", dependencies: ["Day21"]),
-        .target(name: "Day22"),
+        .target(name: "Day22", dependencies: ["AOCAlgorithms"]),
         .testTarget(name: "Day22Tests", dependencies: ["Day22"]),
         .target(name: "Day23"),
         .testTarget(name: "Day23Tests", dependencies: ["Day23"]),

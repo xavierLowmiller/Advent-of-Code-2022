@@ -1,9 +1,8 @@
-
 enum Direction: Int {
     case right = 0
     case down = 1
     case left = 2
-    case top = 3
+    case up = 3
 
     mutating func turnRight() {
         self = Direction(rawValue: (rawValue + 1) % 4)!
